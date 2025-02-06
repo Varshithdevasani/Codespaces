@@ -1,0 +1,9 @@
+<h2>Student Details</h2>
+<!-- <p>Name: {{ student.name }}</p>
+<p>Section: {{ student.section }}</p> -->
+
+<div *ngIf="student$ | async as student">
+    <p>Name: {{ student.name }}</p>
+    <p>Section: {{student.section }}</p>
+
+<button (click)="goBack()">Go Back</button>

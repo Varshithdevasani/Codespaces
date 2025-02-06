@@ -1,0 +1,17 @@
+<h2>Update Details</h2>
+<form [formGroup]="fg" >
+    Name
+    <input type="text" formControlName="name">
+    <div *ngIf="fg.get('name')?.invalid && fg.get('name')?.touched">
+        required
+    </div>
+    <br>
+    Section
+    <input type="text" formControlName="section">
+    <div *ngIf="fg.get('section')?.invalid && fg.get('section')?.touched">
+        Required
+    </div>
+    <br>
+
+<button (click)="updateStudent()">Update</button>
+</form>

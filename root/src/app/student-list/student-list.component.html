@@ -1,0 +1,33 @@
+<h2>Students List</h2>
+<!-- <input type="text" (input)="searchMethod($event)"> -->
+<!-- <input type="radio" (input)="sortbyDesc()" > descending -->
+<!-- <button (click)="sortbyDesc()">sort</button> -->
+ <input type="text" [(ngModel)]="searchTerm"> 
+
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Section</th>
+        <th>Actions</th>
+        </thead>
+        <tbody>
+            <!-- <tr *ngFor="let student of students"> -->
+            <!-- <tr *ngFor="let student of students$|async">
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.section }}</td>
+                <td> -->
+             <tr *ngFor="let student of filteredstudents$|async | sort | filter:searchTerm">
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.section }}</td>
+                <td> 
+                    <button routerLink="/edit/{{student.id}}">Update</button>
+                    <button (click)="deleteStudent(student.id)">Delete</button>
+                    <button (click)="viewStudent(student.id)">View</button>
+                </td>
+            </tr>
+        </tbody>
+        
+        <button routerLink="/add">Add Student</button>

@@ -1,0 +1,31 @@
+<h2>Add Students</h2>
+<form [formGroup]="studentForm"  (ngSubmit)="addStudent()">
+
+<label>Name</label>
+<input type="text" formControlName="name" placeholder="enter name" >
+<div *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched">
+    <p *ngIf="studentForm.get('name')?.errors?.['required']"> 
+        Name is requried!
+    </p>
+    <p *ngIf="studentForm.get('name')?.hasError('minlength')">
+        Min length is 3
+    </p>
+   
+</div>
+<br>
+<label>Section</label>
+<input type="text" formControlName="section" >
+<div *ngIf="studentForm.get('section')?.invalid && studentForm.get('section')?.touched">
+    <div *ngIf="studentForm.get('section')?.hasError('required')">
+        Section is required   
+    </div>
+    <div *ngIf="studentForm.get('section')?.hasError('maxlength')">Length is 1</div>
+</div>
+    <br>
+   
+     <button type="submit" [disabled]="studentForm.invalid">Add</button>
+     <div *ngIf="dataStatus">Added successfully</div>
+     <button (click)="goBack()">Go Back</button>
+     
+        
+
